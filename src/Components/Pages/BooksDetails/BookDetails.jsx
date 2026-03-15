@@ -1,6 +1,12 @@
 import React from 'react'
 import { useLoaderData, useParams } from 'react-router'
-import { addBooksToDb } from '../../Utility/addToDB';
+import { addBooksToDb, addToWishList } from '../../Utility/addToDB';
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import { toast } from 'react-toastify';
+
+const MySwal = withReactContent(Swal)
 
 function BookDetails() {
 
@@ -22,6 +28,11 @@ function BookDetails() {
 
 
     const handleMarkAsRead = (id) => {
+        Swal.fire({
+            title: "Good job!",
+            text: "You marked as read!",
+            icon: "success"
+        });
 
         addBooksToDb(id);
         
@@ -29,6 +40,9 @@ function BookDetails() {
         
     }
     const handleAddToWishList = (id) => {
+
+        toast("You added the book in the wishlist");
+        addToWishList(id);
         
     }
 
@@ -39,12 +53,13 @@ function BookDetails() {
 
           <div>
               <div className="card lg:card-side bg-base-100 shadow-sm p-4 box-border">
-                  <figure className=''>
+                  <figure className='lg:w-2/5'>
                       <img
+                          className=''
                           src={image}
                           alt={bookName} />
                   </figure>
-                  <div className="card-body">
+                  <div className="card-body lg:w-3/5">
                       <h2 className="card-title font-bold text-2xl">{bookName}</h2>
                       <p className='my-3'>By: <span className='font-bold'>{author}</span></p>
                       <div className=' border-y py-5 '>
@@ -63,8 +78,8 @@ function BookDetails() {
                           <p className='my-2'>Rating: <span className='font-bold'>{rating}</span></p>
                           
                           <div className='space-x-3 my-5'>
-                              <button onClick={()=>handleMarkAsRead(`${bookId}`)} className='btn btn-outline'>Mark as Read</button>
-                              <button className='btn btn-info text-white'>Add to WhisList</button>
+                              <button onClick={()=>handleMarkAsRead(bookId)} className='btn btn-outline'>Mark as Read</button>
+                              <button onClick={()=>handleAddToWishList(bookId)} className='btn btn-info text-white'>Add to WhisList</button>
                           </div>
                           
                       </div>
