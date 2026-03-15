@@ -1,16 +1,17 @@
 import React from 'react'
 import { Star } from 'lucide-react';
+import { Link } from 'react-router';
 
 
-function Book({ book }) {
+function Book({ book }) { 
     
-    console.log(book)
+    // console.log(book)
 
 
     const { bookId, image, bookName, tags, author, category, rating }= book
 
   return (
-      <div>
+      <Link to={`/details/${bookId}`}>
           <div className="card bg-base-100 w-96 lg:w-full mx-auto shadow-md p-4">
               <figure>
                   <img
@@ -31,7 +32,7 @@ function Book({ book }) {
                   </div>
               </div>
           </div>
-    </div>
+    </Link>
   )
 }
 

@@ -26,7 +26,7 @@ function Home() {
     //Loading data from json by loader in the routes section
 
     const books = useLoaderData();
-    console.log(books)
+    // console.log(books)
 
     return (
         <div>
