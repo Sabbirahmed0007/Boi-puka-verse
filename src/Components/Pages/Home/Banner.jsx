@@ -3,7 +3,7 @@ import bannerImg from '../../../assets/banner.png'
 
 function Banner() {
   return (
-      <div className='p-10 box-border'>
+      <div className='p-10 box-border shadow-2xl'>
           <div className='flex flex-col-reverse md:flex-row items-center justify-center font-playfair'>
               {/* Left side of the Banner */}
               <div className='md:w-3/5 '>
