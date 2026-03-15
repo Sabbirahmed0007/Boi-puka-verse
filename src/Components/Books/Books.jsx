@@ -4,9 +4,10 @@ import Book from './Book';
 
 
 
-function Books({ booksPromise }) {
+// function Books({ booksPromise }) {
+    // const books = use(booksPromise);
+function Books({ books }) {
 
-    const books = use(booksPromise);
 
     // console.log(books)
 

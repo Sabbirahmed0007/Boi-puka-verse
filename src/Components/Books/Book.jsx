@@ -7,7 +7,7 @@ function Book({ book }) {
     console.log(book)
 
 
-    const { image, bookName, tags, author, category, rating }= book
+    const { bookId, image, bookName, tags, author, category, rating }= book
 
   return (
       <div>
