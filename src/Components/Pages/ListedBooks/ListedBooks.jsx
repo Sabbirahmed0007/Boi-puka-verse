@@ -86,7 +86,7 @@ function ListedBooks() {
 
           {/* Books i read */}
           <TabPanel>
-            <h2 className='text-xl font-bold'>Books:  {readLists.length}</h2>
+            <h2 className='text-xl font-bold ml-4'>Books:  {readLists.length}</h2>
             <div className=' grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5'>
               {
                 readLists.map(readList => <ListedBook key={readList.bookId} list={readList}></ListedBook>)
@@ -95,7 +95,7 @@ function ListedBooks() {
           </TabPanel>
           {/* Books are in my wishList */}
           <TabPanel>
-            <h2>My wishlist: { wishLists.length}</h2>
+            <h2 className='ml-4 text-xl font-bold'>My wishlist: { wishLists.length}</h2>
             <div className=' grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-5'>
               {
                 wishLists.map(wishList => <ListedBook key={wishList.bookId} list={wishList}></ListedBook>)
