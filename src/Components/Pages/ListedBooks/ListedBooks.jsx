@@ -10,7 +10,7 @@ function ListedBooks() {
   const [wishLists, setWishList] = useState([]);
   const [sort , setSort]=useState("")
   const books = useLoaderData();
-  console.log(books)
+  // console.log(books)
 
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function ListedBooks() {
     //WishList books
 
     const storedWishListData = getWishList();
-    console.log(storedWishListData)
+    // console.log(storedWishListData)
     const singlewishListData = storedWishListData.map(id => parseInt(id));
 
     const wishList = books.filter(book => singlewishListData.includes(book.bookId));
@@ -46,20 +46,37 @@ function ListedBooks() {
 
     if (type === "pages") {
 
-      const sortedByPage = [...readLists].sort((a, b) => b.totalPages - a.totalPages)
-      setReadLists(sortedByPage)
+      if (readLists) {
+        
+        const sortedByPage = [...readLists].sort((a, b) => b.totalPages - a.totalPages)
+        setReadLists(sortedByPage)
+      }
+      else {
+        
+        const sortedByPageForWish = [...wishLists].sort((a, b) => b.totalPages - a.totalPages)
+        
+        setWishList(sortedByPageForWish)
+      }
+
       return;
       
     }
     if (type === "ratings") {
-      const sortedByRating = [...readLists].sort((a, b) => b.rating - a.rating)
-      setReadLists(sortedByRating)
+
+      if (readLists) {
+        const sortedByRating = [...readLists].sort((a, b) => b.rating - a.rating)
+        setReadLists(sortedByRating);
+        
+      }
+      else {
+        const sortedByRatingForWish = [...wishLists].sort((a, b) => b.rating - a.rating)
+        setWishList(sortedByRatingForWish)
+        
+      }
       return;
       
     }
 
-    
-    
   }
 
 
